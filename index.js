@@ -1,5 +1,11 @@
+/**
+ * @param {array} urls
+ * @return {promise}
+ */
+
 exports.requestMultipleUrls = async (urls)=> {
   let fetch 
+  //first check if we are passing the the array of urls
   if (!Array.isArray(urls)) {
     throw {
       error: "Array is not provided",
@@ -14,6 +20,7 @@ exports.requestMultipleUrls = async (urls)=> {
       message: "Please install node-fetch module first"
     };
   }
+  //with promise.all we can wait for the result of all of the urls and 
   const result = await Promise.all(
     urls.map(async (url, index) => {
       try {
