@@ -1,12 +1,19 @@
 exports.requestMultipleUrls = async (urls)=> {
-  const fetch = require("node-fetch")
+  let fetch 
   if (!Array.isArray(urls)) {
     throw {
       error: "Array is not provided",
       message: "Please pass an array of urls to the function"
     };
   }
-  
+  try {
+    fetch = require("node-fetch");
+  } catch (e) {
+    throw {
+      error: "node-fetch not found",
+      message: "Please install node-fetch module first"
+    };
+  }
   const result = await Promise.all(
     urls.map(async (url, index) => {
       try {
