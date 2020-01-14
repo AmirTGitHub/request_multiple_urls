@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "AmirTGitHub/request_multiple_urls",
   "scripts": {
-    "test": "mocha  --timeout 2000 ./test/index.test.js"
+    "test": "nyc mocha  --timeout 2000 ./test/index.test.js"
   },
   "keywords": [],
   "author": "Amir Gevari",
@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^7.0.0"
+    "mocha": "^7.0.0",
+    "nyc": "^15.0.0"
   }
 }

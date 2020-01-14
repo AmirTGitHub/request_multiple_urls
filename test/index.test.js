@@ -1,8 +1,7 @@
 var expect = require("chai").expect;
-const requestMultipleUrls = require("../index")
+const requestMultipleUrls = require("../index");
 
 describe("test if we do not pass an array", () => {
- 
   const one =
     "https://ft-tech-test-example.s3-eu-west-1.amazonaws.com/ftse-fsi.json";
 
@@ -11,42 +10,45 @@ describe("test if we do not pass an array", () => {
     message: "Please pass an array of urls to the function"
   };
 
- 
   it("return an error if you pass one url", async () => {
     try {
       await requestMultipleUrls(one);
     } catch (error) {
-      expect(error.error).to.eql(arrayError.error);
-      expect(error.message).to.eql(arrayError.message);
+      expect(error.message).to.equal(
+        "Please pass an array of urls to the function"
+      );
     }
   });
-  it("returns an error if we pass a number" , async()=>{
+  it("returns an error if we pass a number", async () => {
     try {
       await requestMultipleUrls(1234);
     } catch (error) {
-      expect(error.error).to.eql(arrayError.error);
-      expect(error.message).to.eql(arrayError.message);
+      expect(error.message).to.equal(
+        "Please pass an array of urls to the function"
+      );
     }
-   
-  })
- it("returns an error if we pass an object" , async()=>{
-       try {
-      await requestMultipleUrls({url:"https://ft-tech-test-example.s3-eu-west-1.amazonaws.com/ftse-fsi.json"});
+  });
+  it("returns an error if we pass an object", async () => {
+    try {
+      await requestMultipleUrls({
+        url:
+          "https://ft-tech-test-example.s3-eu-west-1.amazonaws.com/ftse-fsi.json"
+      });
     } catch (error) {
-      expect(error.error).to.eql(arrayError.error);
-      expect(error.message).to.eql(arrayError.message);
+      expect(error.message).to.equal(
+        "Please pass an array of urls to the function"
+      );
     }
-    })
-  
+  });
 });
 
-describe("test the arry of urls" , ()=>{
-   const urls = [
+describe("test the arry of urls", () => {
+  const urls = [
     "https://ft-tech-test-example.s3-eu-west-1.amazonaws.com/ftse-fsi.json",
     "https://ft-tech-test-example.s3-eu-west-1.amazonaws.com/gbp-hkd.json",
     "https://ft-tech-test-example.s3-eu-west-1.amazonaws.com/gbp-usd.json"
   ];
-   const urlWithError = [
+  const urlWithError = [
     "https://ft-tech-test-example.s3-eu-west-1.amazonaws.com/ftse-fsi.json",
     "https://ft-tech-test-example.s3-eu-west-1.amazonaws.com/gbp-hkd.json",
     "amir.com"
@@ -62,12 +64,13 @@ describe("test the arry of urls" , ()=>{
     try {
       await requestMultipleUrls(urlWithError);
     } catch (error) {
-      expect(error.error).to.eql(fetchError.error);
-      expect(error.message).to.eql(fetchError.message);
+      expect(error.message).to.equal(
+        `there is an error to fetch the data of this url: ${urlWithError[2]} at this index:${2}`
+      );
     }
   });
   it("fetch all the data", async () => {
     const requestData = await requestMultipleUrls(urls);
     expect(requestData).to.have.length(urls.length);
   });
-})
+});

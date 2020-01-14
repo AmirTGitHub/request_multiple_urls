@@ -20,7 +20,10 @@ const requestMultipleUrls = require('request_multiple_urls')
   ];
 
 const getData = async()=>{
-  const data = await requestMultipleUrls(urls)
+   const data = await requestMultipleUrls(urls)
+    .then(data => console.log(data))
+    .catch(e => console.error(e)) 
+  
 }
 
 ```
@@ -36,4 +39,4 @@ This test it has just a one dependency which is the `node-fetch` just for fetchi
 
 
 # Tests
-I have used Mocha and Chai for testing the function.
+I have used Mocha and Chai for testing the function and it has 92% test coverage.
