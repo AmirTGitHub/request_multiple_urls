@@ -1,6 +1,6 @@
 {
   "name": "request_multiple_urls",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "it is a simple function which is going to fetch an array of urls and return the data",
   "main": "index.js",
   "repository": "AmirTGitHub/request_multiple_urls",
