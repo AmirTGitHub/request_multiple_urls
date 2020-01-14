@@ -3,7 +3,7 @@
  * @return {promise}
  */
 
-exports.requestMultipleUrls = async (urls)=> {
+module.exports = async function requestMultipleUrls (urls){
   let fetch 
   //first check if we are passing the the array of urls
   if (!Array.isArray(urls)) {

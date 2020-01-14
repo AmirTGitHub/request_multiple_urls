@@ -1,5 +1,5 @@
 var expect = require("chai").expect;
-const requestMultipleUrls = require("../index").requestMultipleUrls;
+const requestMultipleUrls = require("../index")
 
 describe("test if we do not pass an array", () => {
  
